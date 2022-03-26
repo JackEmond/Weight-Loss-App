@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Weight Loss</string>
+    <string name="AppName">Weight Loss App!</string>
+    <string name="btnAddWeight"><![CDATA[Add Weight >]]></string>
+    <string name="Logo">Logo Text</string>
+    <string name="inputWeight">Weight</string>
+    <string name="inputDate">Date</string>
+    <string name="btnSubmit">Submit</string>
+    <string name="txtAddWeight">"Add Weight Here "</string>
+</resources>
