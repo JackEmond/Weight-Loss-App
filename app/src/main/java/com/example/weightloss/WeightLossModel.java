@@ -3,10 +3,10 @@ package com.example.weightloss;
 class WeightLossModel
 {
    private int id;
-   private int weight;
-   private int date;
+   private float weight;
+   private long date;
 
-   public WeightLossModel(int id, int weight, int date) {
+   public WeightLossModel(int id, float weight, long date) {
       this.id = id;
       this.weight = weight;
       this.date = date;
@@ -34,15 +34,15 @@ class WeightLossModel
       this.id = id;
    }
 
-   public int getWeight() {
+   public float getWeight() {
       return weight;
    }
 
-   public void setWeight(int weight) {
+   public void setWeight(float weight) {
       this.weight = weight;
    }
 
-   public int getDate() {
+   public long getDate() {
       return date;
    }
 

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Make it so the Add Weight button on the home page goes to the AddWeight Activity page
-        addWeightButton = (Button) findViewById(R.id.btnAddWeight);
+        addWeightButton = (Button) findViewById(R.id.btnAddWeight); //Initialize Button
         addWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
