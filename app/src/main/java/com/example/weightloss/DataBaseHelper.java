@@ -60,7 +60,7 @@ class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public List<WeightLossModel> getAll(){
-        List<WeightLossModel> returnList = new ArrayList<>();
+        ArrayList<WeightLossModel> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + WEIGHTLOSS_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
