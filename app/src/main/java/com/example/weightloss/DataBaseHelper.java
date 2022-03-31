@@ -2,10 +2,13 @@ package com.example.weightloss;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 
@@ -44,7 +47,7 @@ class DataBaseHelper extends SQLiteOpenHelper {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         cv.put(COLUMN_WEIGHT, weightLossModel.getWeight());
-        cv.put(COLUMN_DATE, dateFormat.format(weightLossModel.getDate()));
+        cv.put(COLUMN_DATE, weightLossModel.getDate());
 
         long insert = db.insert(WEIGHTLOSS_TABLE, null, cv);
 
@@ -54,6 +57,31 @@ class DataBaseHelper extends SQLiteOpenHelper {
         else{
             return  true;
         }
+    }
+
+    public List<WeightLossModel> getAll(){
+        List<WeightLossModel> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + WEIGHTLOSS_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if(cursor.moveToFirst()){
+            //loop through the results and create new Weight Loss Objects
+           do{
+               int id = cursor.getInt(0);
+               float weight = cursor.getFloat(1);
+               long date = cursor.getLong(2);
+
+               WeightLossModel newWeightLoss = new WeightLossModel(id, weight, date);
+               returnList.add(newWeightLoss);
+           }
+           while(cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
     }
 
 

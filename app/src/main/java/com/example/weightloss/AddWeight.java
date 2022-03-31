@@ -3,6 +3,7 @@ package com.example.weightloss;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -71,6 +72,7 @@ public class AddWeight extends AppCompatActivity {
                         mDateSetListener,
                         year, month, day );
 
+                //Show Date Picker
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
@@ -100,27 +102,37 @@ public class AddWeight extends AppCompatActivity {
             }
         };
 
-        //Submit Data into Database
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WeightLossModel weightLossModel;
-
-                try{
-                    weightLossModel = new WeightLossModel(-1, Float.parseFloat(inputWeight.getText().toString()), dateLong);
-                    Toast.makeText(AddWeight.this, weightLossModel.toString(), Toast.LENGTH_SHORT).show();
-
-                }
-                catch(Exception e){
-                    Toast.makeText(AddWeight.this, "Please fill in your weight", Toast.LENGTH_SHORT).show();
-                    weightLossModel = new WeightLossModel(-1, 0, 0);
-                }
-
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(AddWeight.this);
-                boolean success = dataBaseHelper.addOne(weightLossModel);
-
-                Toast.makeText(AddWeight.this, "Success = " + success, Toast.LENGTH_SHORT).show();
+                addWeightToDatabase();
+                openMainActivity();
             }
         });
+    }
+
+
+
+    public void openMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
+    public void addWeightToDatabase(){
+        WeightLossModel weightLossModel;
+
+        try{
+            weightLossModel = new WeightLossModel(-1, Float.parseFloat(inputWeight.getText().toString()), dateLong);
+
+        }
+        catch(Exception e){
+            Toast.makeText(AddWeight.this, "Please fill in your weight", Toast.LENGTH_SHORT).show();
+            weightLossModel = new WeightLossModel(-1, 0, 0);
+        }
+
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(AddWeight.this);
+        boolean success = dataBaseHelper.addOne(weightLossModel);
     }
 }
