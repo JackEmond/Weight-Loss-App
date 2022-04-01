@@ -32,15 +32,6 @@ public class AddWeight extends AppCompatActivity {
     long dateLong; // used to store date as a long which is how it is stored in the database
 
 
-    protected  void settxtDateAsCurrentDate(){
-        Calendar c = Calendar.getInstance();
-        dateLong = c.getTimeInMillis(); //Store time in long so you can store in database
-        Date dt = c.getTime(); //Get the current time
-        SimpleDateFormat df = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault()); //format date
-        String formattedDate = df.format(dt); // convert to string
-        txtDate.setText(formattedDate);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +46,8 @@ public class AddWeight extends AppCompatActivity {
         txtDate = (TextView) findViewById(R.id.txtDate);
         settxtDateAsCurrentDate();
 
-
+        //Back Button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //pop up the Calendar when the Date Text is clicked
         txtDate.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +103,14 @@ public class AddWeight extends AppCompatActivity {
         });
     }
 
+    protected  void settxtDateAsCurrentDate(){
+        Calendar c = Calendar.getInstance();
+        dateLong = c.getTimeInMillis(); //Store time in long so you can store in database
+        Date dt = c.getTime(); //Get the current time
+        SimpleDateFormat df = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault()); //format date
+        String formattedDate = df.format(dt); // convert to string
+        txtDate.setText(formattedDate);
+    }
 
 
     public void openMainActivity(){

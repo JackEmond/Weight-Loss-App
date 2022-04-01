@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -35,19 +36,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.top_bar)));
+
+        //Create Recycler Viewer with populated items
         rvWeights = findViewById(R.id.rvWeights); //Initialize Button
         DataBaseHelper  dataBaseHelper = new DataBaseHelper(MainActivity.this);
         ArrayList<WeightLossModel> everyone = (ArrayList<WeightLossModel>) dataBaseHelper.getAll();
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, everyone);
         rvWeights.setAdapter(adapter);
         rvWeights.setLayoutManager(new LinearLayoutManager(this));
-
-        //Adapter weightLossArrayAdapter = new ArrayAdapter<WeightLossModel>(MainActivity.this, android.R.layout.simple_list_item_1, everyone);
-        //rvWeights.setAdapter((RecyclerView.Adapter) weightLossArrayAdapter);
-    }
-
-
-    public void setUpWeightLossModel(){
 
     }
 

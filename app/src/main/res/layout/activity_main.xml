@@ -10,7 +10,7 @@
         android:id="@+id/btnAddWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="424dp"
+        android:layout_marginBottom="524dp"
         android:text="@string/btnAddWeight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +21,9 @@
         android:id="@+id/imgLogo"
         android:layout_width="164dp"
         android:layout_height="121dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/Logo"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/weight_loss_logo"
         app:layout_constraintBottom_toTopOf="@+id/btnAddWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -31,14 +31,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWeights"
-        android:layout_width="361dp"
-        android:layout_height="374dp"
+        android:layout_width="374dp"
+        android:layout_height="428dp"
         android:layout_marginTop="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddWeight"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

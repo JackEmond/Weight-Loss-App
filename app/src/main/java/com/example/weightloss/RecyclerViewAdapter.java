@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,9 +36,13 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
    @Override
    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
-   // binding values to rows
-      holder.weight.setText(String.valueOf(weightLossModel.get(position).getWeight()));
-      holder.date.setText(String.valueOf(weightLossModel.get(position).getDate()));
+      // binding values to rows
+      holder.weight.setText(String.valueOf(weightLossModel.get(position).getWeight()+" lbs"));
+
+      //Convert long back to a date
+       SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+      String dateString = formatter.format(new Date(weightLossModel.get(position).getDate()));
+      holder.date.setText(String.valueOf(dateString));
 
    }
 
