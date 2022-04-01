@@ -82,11 +82,6 @@ public class AddWeight extends AppCompatActivity {
                 cal.set(year, month, day);
                 dateLong = cal.getTimeInMillis();
 
-                // Convert a long back to a date
-                // SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-                // String dateString = formatter.format(new Date(dateLong));
-                // Toast.makeText(AddWeight.this, "Date = " + dateString, Toast.LENGTH_SHORT).show();
-
                 //Set
                 String formattedMonth = new SimpleDateFormat("MMM").format(cal.getTime());
                 String date =  formattedMonth + " " + day + " " + year;
@@ -97,8 +92,12 @@ public class AddWeight extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addWeightToDatabase();
-                openMainActivity();
+                //Insert data into database
+                boolean dataInsertedIntoDatabase = addWeightToDatabase();
+
+                if(dataInsertedIntoDatabase){
+                    openMainActivity();
+                }
             }
         });
     }
@@ -120,19 +119,21 @@ public class AddWeight extends AppCompatActivity {
 
 
 
-    public void addWeightToDatabase(){
+    public boolean addWeightToDatabase(){
         WeightLossModel weightLossModel;
 
         try{
             weightLossModel = new WeightLossModel(-1, Float.parseFloat(inputWeight.getText().toString()), dateLong);
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(AddWeight.this);
+            dataBaseHelper.addOne(weightLossModel);
+            return true;
 
         }
         catch(Exception e){
             Toast.makeText(AddWeight.this, "Please fill in your weight", Toast.LENGTH_SHORT).show();
-            weightLossModel = new WeightLossModel(-1, 0, 0);
+            return false;
         }
 
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(AddWeight.this);
-        boolean success = dataBaseHelper.addOne(weightLossModel);
+
     }
 }
