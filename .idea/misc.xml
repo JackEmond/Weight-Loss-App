@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/Programming Projects/Java/WeightLoss/app/src/main/res/drawable/roundedbox.xml" value="0.3165" />
+        <entry key="..\:/Documents/Programming Projects/Java/WeightLoss/app/src/main/res/drawable/whitebox.xml" value="0.489" />
         <entry key="..\:/Documents/Programming Projects/Java/WeightLoss/app/src/main/res/layout/activity_add_weight.xml" value="0.5" />
         <entry key="..\:/Documents/Programming Projects/Java/WeightLoss/app/src/main/res/layout/activity_main.xml" value="0.286231884057971" />
         <entry key="..\:/Documents/Programming Projects/Java/WeightLoss/app/src/main/res/layout/rv_row.xml" value="0.3963541666666667" />

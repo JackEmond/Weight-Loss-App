@@ -49,6 +49,7 @@ public class AddWeight extends AppCompatActivity {
         //Back Button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         //pop up the Calendar when the Date Text is clicked
         txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +99,14 @@ public class AddWeight extends AppCompatActivity {
                 if(dataInsertedIntoDatabase){
                     openMainActivity();
                 }
+                else{
+                    Toast.makeText(AddWeight.this, "Please fill in your weight", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
+
 
     protected  void settxtDateAsCurrentDate(){
         Calendar c = Calendar.getInstance();
@@ -130,7 +136,6 @@ public class AddWeight extends AppCompatActivity {
 
         }
         catch(Exception e){
-            Toast.makeText(AddWeight.this, "Please fill in your weight", Toast.LENGTH_SHORT).show();
             return false;
         }
 

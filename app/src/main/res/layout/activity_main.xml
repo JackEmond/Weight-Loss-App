@@ -4,41 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/logo_blue"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnAddWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="524dp"
-        android:text="@string/btnAddWeight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="164dp"
         android:layout_height="121dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="@string/Logo"
         android:src="@drawable/weight_loss_logo"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/roundedbox"
+        app:layout_constraintBottom_toTopOf="@+id/rvWeights"
+        app:layout_constraintEnd_toEndOf="@+id/rvWeights"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/rvWeights"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btnAddWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7A62BB"
+            android:textColor="#fff"
+            android:radius="300dp"
+            android:layout_gravity="center"
+            android:text="@string/btnAddWeight"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </FrameLayout>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWeights"
-        android:layout_width="374dp"
-        android:layout_height="428dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="390dp"
+        android:layout_height="0dp"
+        android:background="@drawable/whitebox"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddWeight"
-        app:layout_constraintVertical_bias="0.2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
