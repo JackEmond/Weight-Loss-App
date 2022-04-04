@@ -5,6 +5,7 @@ class WeightLossModel
    private int id;
    private float weight;
    private long date;
+   private boolean weightDecrease;
 
    public WeightLossModel(int id, float weight, long date) {
       this.id = id;
@@ -12,8 +13,11 @@ class WeightLossModel
       this.date = date;
    }
 
-   public WeightLossModel() {
-
+   public WeightLossModel(int id, float weight, long date, boolean weightDecrease) {
+      this.id = id;
+      this.weight = weight;
+      this.date = date;
+      this.weightDecrease = weightDecrease;
    }
 
    @Override
@@ -36,6 +40,9 @@ class WeightLossModel
 
    public float getWeight() {
       return weight;
+   }
+   public boolean getStatus() {
+      return weightDecrease;
    }
 
    public void setWeight(float weight) {

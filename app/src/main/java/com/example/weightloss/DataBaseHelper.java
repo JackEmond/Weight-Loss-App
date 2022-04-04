@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,17 +67,30 @@ class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
-        if(cursor.moveToFirst()){
-            //loop through the results and create new Weight Loss Objects
-           do{
-               int id = cursor.getInt(0);
-               float weight = cursor.getFloat(1);
-               long date = cursor.getLong(2);
+        if (cursor.moveToFirst()) {
+            while(true) {
+                //loop through the results and create new Weight Loss Objects
+                    int id = cursor.getInt(0);
+                    float weight = cursor.getFloat(1);
+                    long date = cursor.getLong(2);
 
-               WeightLossModel newWeightLoss = new WeightLossModel(id, weight, date);
-               returnList.add(newWeightLoss);
-           }
-           while(cursor.moveToNext());
+                    if(cursor.moveToNext()) {
+                        boolean weightLoss = false;
+                        float nextWeight = cursor.getFloat(1);
+                        if (nextWeight > weight) {
+                            weightLoss = true;
+                        }
+
+                        WeightLossModel newWeightLoss = new WeightLossModel(id, weight, date, weightLoss);
+                        returnList.add(newWeightLoss);
+                    }
+                    else{
+                        WeightLossModel newWeightLoss = new WeightLossModel(id, weight, date, true);
+                        returnList.add(newWeightLoss);
+
+                        break;
+                    }
+            }
         }
 
         cursor.close();

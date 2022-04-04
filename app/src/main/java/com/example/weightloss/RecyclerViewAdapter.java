@@ -38,6 +38,8 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
       // binding values to rows
       holder.weight.setText(String.valueOf(weightLossModel.get(position).getWeight()+" lbs"));
+      holder.status.setText(String.valueOf(weightLossModel.get(position).getStatus()));
+
 
       //Convert long back to a date
        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -55,11 +57,12 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
    public static class MyViewHolder extends  RecyclerView.ViewHolder{
       // Grab views and assign to variables
 
-      TextView weight, date;
+      TextView weight, date, status;
 
       public MyViewHolder(@NonNull View itemView) {
          super(itemView);
 
+         status = itemView.findViewById(R.id.txtStatus);
          weight = itemView.findViewById(R.id.txtWeightRV);
          date = itemView.findViewById(R.id.txtDateRV);
 
